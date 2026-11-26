@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Gerudo mark: a circuit (frame, centre ring, traces to nodes).
+       Brand colours: green #008F11, background #0D0208. -->
+  <rect width="1024" height="1024" rx="224" fill="#0D0208"/>
+  <g fill="none" stroke="#008F11" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="200" y="200" width="624" height="624" rx="28" stroke-width="44"/>
+    <circle cx="512" cy="512" r="70"/>
+    <path d="M512 442V222M512 582V802M442 512H222M582 512H802"/>
+    <g id="q">
+      <path d="M463 463L398 398V300M398 398H300M430 430L330 330"/>
+      <circle cx="398" cy="276" r="26" stroke-width="26"/>
+      <circle cx="276" cy="398" r="26" stroke-width="26"/>
+      <circle cx="312" cy="312" r="26" stroke-width="26"/>
+    </g>
+    <use href="#q" transform="matrix(-1 0 0 1 1024 0)"/>
+    <use href="#q" transform="matrix(1 0 0 -1 0 1024)"/>
+    <use href="#q" transform="matrix(-1 0 0 -1 1024 1024)"/>
+  </g>
+</svg>

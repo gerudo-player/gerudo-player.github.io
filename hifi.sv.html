@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gerudo Hi-fi: bitperfekt, och den kan bevisa det</title>
+<meta name="description" content="Gerudo skickar varje låt till din DAC i sin egen samplingsfrekvens, orörd, och visar dig när något står i vägen.">
+<meta property="og:title" content="Gerudo Hi-fi: bitperfekt, och den kan bevisa det">
+<meta property="og:description" content="Varje låt i sin egen samplingsfrekvens på din DAC, originalfilen, och en ärlig indikator när något står i vägen.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="en" href="hifi.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="wordmark" href="index.sv.html"><img src="img/00-logo.svg" width="26" height="26" alt="">GERUDO</a>
+  <nav aria-label="Sidor">
+    <a href="index.sv.html">Produkt</a>
+    <a href="hifi.sv.html" aria-current="page">Hi-fi</a>
+    <a href="everywhere.sv.html">Överallt</a>
+  </nav>
+  <div class="lang" aria-label="Språk"><a href="hifi.html" hreflang="en" lang="en">EN</a><a href="hifi.sv.html" aria-current="true" lang="sv">SV</a></div>
+  <a class="to-manual" href="manual/sv/" hreflang="sv">Manualen</a>
+</header>
+
+<main>
+<!-- HERO: the signal chain -->
+<section class="band hero" style="padding-bottom: clamp(72px, 10vw, 130px)">
+  <div class="wrap">
+    <p class="eyebrow rise">Hi-fi-läge</p>
+    <h1 class="rise">Bitperfekt.<br>Och den kan <span class="accent">bevisa</span> det.</h1>
+    <p class="lede rise">De flesta spelare lämnar varje låt till systemet i en och samma frekvens och låter det sampla om resten. Gerudo skickar varje låt till din DAC precis som filen gjordes, och bevakar hela vägen för att säga till om något ändrade den.</p>
+
+    <div class="chain rise" role="list" aria-label="Vägen för en låt i 24 bitar, 96 kHz">
+      <div class="hop" role="listitem">
+        <small>1 · Filen</small>
+        <strong>På din egen server</strong>
+        <span class="chip hires">FLAC 24/96</span>
+      </div>
+      <div class="hop" role="listitem">
+        <small>2 · Gerudo <span class="arrow">→</span></small>
+        <strong>Hämtar originalet, avkodar det, ändrar ingenting</strong>
+        <span class="chip hires">24 bitar · 96 kHz</span>
+      </div>
+      <div class="hop" role="listitem">
+        <small>3 · Systemet <span class="arrow">→</span></small>
+        <strong>Ställs om till låtens frekvens innan den spelas</strong>
+        <span class="chip hires">96 kHz</span>
+      </div>
+      <div class="hop" role="listitem">
+        <small>4 · Din DAC <span class="arrow">→</span></small>
+        <strong>Tar emot varje bit i filen</strong>
+        <span class="chip ok">✓ Bitperfekt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="band steel">
+  <div class="wrap split">
+    <div class="rise">
+      <p class="eyebrow">Det tysta problemet</p>
+      <h2>Ditt 24/96-album spelades i 48 kHz.</h2>
+      <p class="lede">På en Linux-dator kör ljudsystemet i en enda frekvens, oftast 48 kHz, och gör tyst om allt till den. En CD-rip i 44,1 kHz, ett hi-res-album i 96 eller 192: allt samplas om, varje gång.</p>
+      <ul class="feats">
+        <li style="--dot: var(--amber)"><b>Varje låt i sin egen frekvens</b><span>Med hi-fi-läget på ställer Gerudo om din DAC för varje låt: 44,1 för en CD-rip, 192 för en hi-res-master. En kort tystnad mellan låtar i olika frekvenser är enda tecknet.</span></li>
+        <li style="--dot: var(--teal)"><b>Andra appar fortsätter spela</b><span>Aviseringar och videor fungerar som vanligt; det är de som görs om nu, inte din musik.</span></li>
+        <li><b>Inget lämnas kvar</b><span>Paus behåller frekvensen. Stoppa eller avsluta, så får systemet tillbaka sin vanliga frekvens.</span></li>
+      </ul>
+    </div>
+    <div class="crop rise"><img src="img/06-hifi-desktop.webp" width="672" height="682" loading="lazy" decoding="async" alt="Inställningar, Ljud: hi-fi-läge på, hi-fi-läge för Spotify på i 44,1 kHz, en varning om att det inte är bitperfekt eftersom volymen är 70 %, och en Naim DAC-V1 testad från 44,1 till 384 kHz"></div>
+  </div>
+</section>
+
+<!-- HONEST INDICATOR + DAC TEST -->
+<section class="band">
+  <div class="wrap split flip">
+    <div class="rise">
+      <p class="eyebrow">Inget audiofilt gissande</p>
+      <h2>Den säger till när det inte är bitperfekt. Och varför.</h2>
+      <p class="lede">Gerudo läser av vad som verkligen når din DAC, frekvens, format och enhet, och jämför med filen. Står något i vägen säger den vad.</p>
+      <ul class="feats">
+        <li style="--dot: var(--amber)"><b>"Inte bitperfekt: volymen är 70 %"</b><span>Mjukvaruvolym ändrar samplingarna, så den säger det. Höj volymen i Gerudo och sänk den på DAC:en eller förstärkaren, så försvinner varningen.</span></li>
+        <li><b>Testa din DAC</b><span>En knapp spelar tystnad och ställer om din DAC genom varje frekvens från 44,1 till 384 kHz, och minns sedan vilka den faktiskt tog emot. Hi-fi-läget använder bara dem.</span></li>
+        <li style="--dot: var(--teal)"><b>Panelen bakom märket</b><span>Tryck på valfritt kvalitetsmärke för hela bilden: filen, vad som avkodades, vad systemet fick och vilken frekvens utgången kör i.</span></li>
+      </ul>
+    </div>
+    <div class="duo rise">
+      <div class="frame-phone"><img src="img/12-quality-phone.webp" width="600" height="1287" loading="lazy" decoding="async" alt="Mobilens ljudkvalitetspanel: FLAC Hi-res 48 kHz 24 bitar, spelad av Androids Media3 från originalfilen, float behåller alla 24 bitar, med kontroller av utgången"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPOTIFY + PHONE -->
+<section class="band steel">
+  <div class="wrap">
+    <p class="eyebrow rise">Mer än dina egna filer</p>
+    <h2 class="rise">Samma omsorg för Spotify, och för mobilen.</h2>
+    <div class="trip">
+      <div class="card rise">
+        <h3><span class="dots"><i class="sp"></i></span> Spotify, förlustfritt</h3>
+        <p>På datorn spelas Spotify inne i Gerudo, aldrig genom en webbläsare. Hi-fi-läget för Spotify ställer DAC:en på 44,1 kHz, frekvensen Spotify strömmar i, och kvalitetspanelen visar vad Spotify faktiskt skickar, till exempel förlustfri FLAC.</p>
+      </div>
+      <div class="card rise">
+        <h3><span class="dots"><i class="nd"></i></span> 24 bitar på Android</h3>
+        <p>Mobilen spelar också originalfilen och lämnar musik i 24 bitar till Android utan att kapa den till 16. Kontroller upptäcker vad Android gör sedan, som en högtalare som bara tar 48 kHz.</p>
+      </div>
+      <div class="card rise">
+        <h3>Alltid originalfiler</h3>
+        <p>Din server skickar filen du rippade, aldrig en konverterad kopia: ingen omkodning, ingen "normalisering", inga övertoningar ovanpå. Det märket säger är det som spelas.</p>
+      </div>
+    </div>
+    <p class="note rise">Pågår: bitperfekt uppspelning från mobilen till en USB-DAC är planerad. I dag levererar mobilen varje bit till Android, och kontrollerna säger rakt ut vad Android gör efter det.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="next">
+      <a href="index.sv.html"><small>Produkt</small><h3>Allt Gerudo gör</h3><p>Sök, den stora spelaren, historik, flera servrar och blandade spellistor.</p><span class="go">Tillbaka till produkten →</span></a>
+      <a href="everywhere.sv.html"><small>Överallt</small><h3>Ett bibliotek. Två skärmar. Inget moln.</h3><p>Hur mobil och dator håller takten, via en hubb du själv äger.</p><span class="go">Se hur de pratar →</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="credits">
+  <div class="wrap">
+    <p>Hi-fi-läget på datorn bygger på PipeWire med libmpv; i mobilen Androids Media3. Testat med en Naim DAC-V1.</p>
+    <div class="stack" aria-label="Byggd med"><span>Rust</span><span>libmpv</span><span>PipeWire</span><span>Kotlin · Media3</span><span>Soloist</span></div>
+  </div>
+</footer>
+
+<script>
+  // A local preview has no server to find a folder's index.html: name it.
+  if (location.protocol === "file:")
+    document.querySelectorAll("a[href$='/']").forEach((a) => a.setAttribute("href", a.getAttribute("href") + "index.html"));
+  document.documentElement.classList.add("js");
+  const show = (el) => el.classList.add("in");
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && (show(e.target), io.unobserve(e.target))), { threshold: 0.05 });
+  document.querySelectorAll(".rise").forEach((el) => io.observe(el));
+  // Never leave anything hidden: everything shows after two seconds regardless.
+  setTimeout(() => document.querySelectorAll(".rise").forEach(show), 2000);
+
+  // Pictures: tap for the full size; a tap, Back or Esc closes it (as in the manual).
+  (() => {
+    const layer = document.createElement("div");
+    layer.className = "zoom";
+    layer.hidden = true;
+    layer.innerHTML = '<img alt=""><p></p>';
+    document.body.append(layer);
+    const big = layer.querySelector("img");
+    const cap = layer.querySelector("p");
+    let open = false;
+    const shut = (fromHistory) => {
+      if (!open) return;
+      open = false;
+      layer.classList.remove("open");
+      document.documentElement.classList.remove("zoomed");
+      setTimeout(() => { if (!open) layer.hidden = true; }, 200);
+      if (!fromHistory && history.state && history.state.zoom) history.back();
+    };
+    document.querySelectorAll('main img[src^="img/"]').forEach((img) => {
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      const show = () => {
+        big.src = img.getAttribute("src").replace(/\.webp$/, "-full.webp");
+        big.alt = img.alt;
+        cap.textContent = img.alt;
+        layer.hidden = false;
+        document.documentElement.classList.add("zoomed");
+        requestAnimationFrame(() => requestAnimationFrame(() => layer.classList.add("open")));
+        open = true;
+        history.pushState({ zoom: true }, "");
+      };
+      img.addEventListener("click", (e) => { e.preventDefault(); show(); });
+      img.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(); } });
+    });
+    layer.addEventListener("click", () => shut(false));
+    addEventListener("keydown", (e) => { if (e.key === "Escape") shut(false); });
+    addEventListener("popstate", () => shut(true));
+  })();
+</script>
+</body>
+</html>

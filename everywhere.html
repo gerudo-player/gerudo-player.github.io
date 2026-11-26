@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gerudo Everywhere: one library, two screens, no cloud</title>
+<meta name="description" content="Move music between phone and computer in one tap. Playlists and history stay in step through a small hub you own.">
+<meta property="og:title" content="Gerudo Everywhere: one library, two screens, no cloud">
+<meta property="og:description" content="Phone and computer in step through a hub at home; a new computer joins by scanning one code.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="sv" href="everywhere.sv.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="wordmark" href="index.html"><img src="img/00-logo.svg" width="26" height="26" alt="">GERUDO</a>
+  <nav aria-label="Pages">
+    <a href="index.html">Product</a>
+    <a href="hifi.html">Hi-fi</a>
+    <a href="everywhere.html" aria-current="page">Everywhere</a>
+  </nav>
+  <div class="lang" aria-label="Language"><a href="everywhere.html" aria-current="true" lang="en">EN</a><a href="everywhere.sv.html" hreflang="sv" lang="sv">SV</a></div>
+  <a class="to-manual" href="manual/">The manual</a>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="band hero" style="padding-bottom: clamp(72px, 10vw, 130px)">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow rise">Phone and computer</p>
+      <h1 class="rise">One library.<br>Two screens.<br><span class="accent">No cloud.</span></h1>
+      <p class="lede rise">Start an album on the computer, walk away, and press <b style="color:var(--bone)">Play here</b> on your phone: same queue, same song, same second. Everything stays in step through a small hub in your own home.</p>
+    </div>
+    <div class="duo rise">
+      <div class="frame-phone"><img src="img/11-full-player-phone.webp" width="600" height="1287" loading="lazy" decoding="async" alt="The phone's full player, playing from the album Root of Evil, picked up from the computer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HANDOFF -->
+<section class="band steel">
+  <div class="wrap">
+    <p class="eyebrow rise">Handoff</p>
+    <h2 class="rise">The music follows you, not the other way round.</h2>
+    <div class="chain rise" role="list" aria-label="Moving the music from computer to phone">
+      <div class="hop" role="listitem"><small>On the computer</small><strong>An album is playing, 2:48 into song 4</strong><span class="chip lossless">Playing from Drukqs</span></div>
+      <div class="hop" role="listitem"><small>On the phone <span class="arrow">→</span></small><strong>A bar says what plays on the desktop. Tap Play here</strong><span class="chip ok">Play here</span></div>
+      <div class="hop" role="listitem"><small>A moment later <span class="arrow">→</span></small><strong>The computer stops; the phone carries on, same queue, same spot</strong><span class="chip lossless">Playing from Drukqs</span></div>
+    </div>
+    <ul class="feats" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 56px">
+      <li><b>See what the other plays</b><span>The song, where it's at and what comes next, even from the phone's lock screen.</span></li>
+      <li><b>Remote control</b><span>Play, pause, skip, seek, volume and the queue of the other device; whatever you pick plays there.</span></li>
+      <li><b>One player at a time</b><span>Starting music on one device pauses the other. No two rooms playing at once by accident.</span></li>
+      <li><b>Spotify too</b><span>Handoff carries Spotify songs and mixed queues, not just your own files.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- HUB / SYNC -->
+<section class="band">
+  <div class="wrap split">
+    <div class="rise">
+      <p class="eyebrow">The hub</p>
+      <h2>A small box at home keeps your devices in step.</h2>
+      <p class="lede">Gerudo's hub runs on a Raspberry Pi next to your music server. It holds the things that should be the same everywhere, and nothing more. No account with anyone, no data leaving your home.</p>
+      <ul class="feats">
+        <li style="--dot: var(--mx)"><b>Shared between devices</b><span>Playlist edits, mixed playlists, pinned playlists, ignored songs, recent searches, Recently played and History.</span></li>
+        <li><b>Works offline</b><span>Change things without a connection; the device catches up when it's back.</span></li>
+        <li style="--dot: var(--nd)"><b>Home and away</b><span>A home address and an away address (for example over Tailscale): Gerudo tries one, then the other.</span></li>
+      </ul>
+    </div>
+    <div class="crop rise"><img src="img/05-sync-desktop.webp" width="640" height="250" loading="lazy" decoding="async" alt="Settings: Sync between devices connected, sharing playlists, mixed playlists, pins, ignored songs, recent searches, recently played and now playing, with the phone listed as a device that can take commands"></div>
+  </div>
+</section>
+
+<!-- LINKING -->
+<section class="band steel">
+  <div class="wrap">
+    <p class="eyebrow rise">A new computer</p>
+    <h2 class="rise">Set up a computer by scanning one code.</h2>
+    <p class="lede rise">Install with a single command from your own hub, open Gerudo, and point your phone at the code on screen. Your servers and their passwords arrive, sealed so that only that computer can open them.</p>
+    <div class="chain rise" role="list" aria-label="Linking a computer from the phone">
+      <div class="hop" role="listitem"><small>1 · Computer</small><strong>Shows a one-time code, valid for five minutes</strong><span class="chip">QR</span></div>
+      <div class="hop" role="listitem"><small>2 · Phone <span class="arrow">→</span></small><strong>Scans it and asks you to approve</strong><span class="chip ok">Approve</span></div>
+      <div class="hop" role="listitem"><small>3 · Hub <span class="arrow">→</span></small><strong>Passes on a sealed parcel it can't read itself</strong><span class="chip lossless">Encrypted end to end</span></div>
+      <div class="hop" role="listitem"><small>4 · Computer <span class="arrow">→</span></small><strong>Has your servers, its own key and your playlists</strong><span class="chip ok">✓ Ready</span></div>
+    </div>
+    <ul class="feats" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 56px">
+      <li><b>One command to install</b><span>Your hub serves signed packages for Arch, Debian/Ubuntu and Fedora; updates then come with the system's own updater.</span></li>
+      <li><b>Passwords stay in the keyring</b><span>The system's own keyring on the computer, Android's keystore on the phone. Never in plain files.</span></li>
+      <li><b>Remove a device anytime</b><span>The phone lists every linked computer, and one tap cuts it off.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- HISTORY ACROSS DEVICES -->
+<section class="band">
+  <div class="wrap split flip">
+    <div class="rise">
+      <p class="eyebrow">Shared memory</p>
+      <h2>Both devices remember the same evening.</h2>
+      <p class="lede">History and Recently played come from every device, so the album you started on the phone on the bus is right there on the computer at home, with "on phone" next to each song.</p>
+    </div>
+    <div class="duo rise">
+      <div class="frame-phone"><img src="img/13-history-phone.webp" width="600" height="1287" loading="lazy" decoding="async" alt="History grouped by day, each song with its time and on phone"></div>
+      <div class="frame-phone"><img src="img/10-home-phone.webp" width="600" height="1287" loading="lazy" decoding="async" alt="Home on the phone with recently played albums"></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="next">
+      <a href="index.html"><small>Product</small><h3>Everything Gerudo does</h3><p>Search, the big player, history, several servers and mixed playlists.</p><span class="go">Back to the product →</span></a>
+      <a href="hifi.html"><small>Hi-fi</small><h3>Bit-perfect, and it can prove it.</h3><p>Each song at its own sample rate on your DAC, with an honest indicator.</p><span class="go">See the signal chain →</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="credits">
+  <div class="wrap">
+    <p>The hub is a small Rust server with an SQLite database, running in Docker on a Raspberry Pi 5, reachable at home or over Tailscale.</p>
+    <div class="stack" aria-label="Built with"><span>Rust · axum</span><span>SQLite</span><span>WebSocket</span><span>X25519 · ChaCha20-Poly1305</span><span>Docker</span><span>Tailscale</span></div>
+  </div>
+</footer>
+
+<script>
+  // A local preview has no server to find a folder's index.html: name it.
+  if (location.protocol === "file:")
+    document.querySelectorAll("a[href$='/']").forEach((a) => a.setAttribute("href", a.getAttribute("href") + "index.html"));
+  document.documentElement.classList.add("js");
+  const show = (el) => el.classList.add("in");
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && (show(e.target), io.unobserve(e.target))), { threshold: 0.05 });
+  document.querySelectorAll(".rise").forEach((el) => io.observe(el));
+  // Never leave anything hidden: everything shows after two seconds regardless.
+  setTimeout(() => document.querySelectorAll(".rise").forEach(show), 2000);
+
+  // Pictures: tap for the full size; a tap, Back or Esc closes it (as in the manual).
+  (() => {
+    const layer = document.createElement("div");
+    layer.className = "zoom";
+    layer.hidden = true;
+    layer.innerHTML = '<img alt=""><p></p>';
+    document.body.append(layer);
+    const big = layer.querySelector("img");
+    const cap = layer.querySelector("p");
+    let open = false;
+    const shut = (fromHistory) => {
+      if (!open) return;
+      open = false;
+      layer.classList.remove("open");
+      document.documentElement.classList.remove("zoomed");
+      setTimeout(() => { if (!open) layer.hidden = true; }, 200);
+      if (!fromHistory && history.state && history.state.zoom) history.back();
+    };
+    document.querySelectorAll('main img[src^="img/"]').forEach((img) => {
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      const show = () => {
+        big.src = img.getAttribute("src").replace(/\.webp$/, "-full.webp");
+        big.alt = img.alt;
+        cap.textContent = img.alt;
+        layer.hidden = false;
+        document.documentElement.classList.add("zoomed");
+        requestAnimationFrame(() => requestAnimationFrame(() => layer.classList.add("open")));
+        open = true;
+        history.pushState({ zoom: true }, "");
+      };
+      img.addEventListener("click", (e) => { e.preventDefault(); show(); });
+      img.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(); } });
+    });
+    layer.addEventListener("click", () => shut(false));
+    addEventListener("keydown", (e) => { if (e.key === "Escape") shut(false); });
+    addEventListener("popstate", () => shut(true));
+  })();
+</script>
+</body>
+</html>
