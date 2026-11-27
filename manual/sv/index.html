@@ -2353,11 +2353,11 @@ html {
 </nav>
 
 <header>
-  <div class="kicker">Manualen · Gerudo 0.18.0</div>
+  <div class="kicker">Manualen · Gerudo 0.19.0</div>
   <h1>Gerudo förklarat: så följer musiken med dig</h1>
   <p class="lede">Gerudo är en egenhostad musikspelare för en Linux-dator och en Android-telefon. Den spelar din egen musiksamling och Spotify sida vid sida, håller alla enheter i takt och låter dig flytta musiken från en enhet till en annan utan att tappa ett enda slag. Den här manualen förklarar varje funktion, och hur och varför den fungerar som den gör.</p>
   <div class="meta">
-    <div><span>Beskriver</span>Gerudo 0.18.0</div>
+    <div><span>Beskriver</span>Gerudo 0.19.0</div>
     <div><span>Enheter</span>Linux-dator · Android</div>
     <div><span>Så läser du den</span>Det största först; varje kapitel står på egna ben</div>
   </div>
@@ -3068,11 +3068,11 @@ html {
 <section class="chapter" id="radio">
   <div class="chapter-num">6</div>
   <h2 id="ch-radio">Genreradio</h2>
-  <p class="outcome">Oändligt med musik ur valfri genre eller undergenre i din egen samling: Metal, eller Metal → Black, eller Metal → Black → Atmospheric, sorterad efter Gerudos eget genreträd, dina filers taggar och Last.fm.</p>
+  <p class="outcome">Oändligt med musik ur valfri genre eller undergenre i din egen samling: Metal, eller Metal → Black, eller Metal → Black → Atmospheric, sorterad efter Gerudos eget genreträd, med Last.fm först och dina filers taggar där Last.fm inte vet något.</p>
 
   <div class="concept">
     <b>Så fungerar det</b>
-    <p>Tänk på företagets arkiv. Varje skiva som kommer in (en låt) har en etikett (sina genretaggar). En arkivarie sorterar in den i rätt låda i ett fast arkivskåp (Gerudos genreträd). Saknas etiketten eller går den inte att läsa slår arkivarien upp skivan i en stor öppen katalog (Last.fm). Och om du själv flyttar en skiva till en annan låda gäller din lapp från och med då. Genreradion plockar helt enkelt slumpmässiga skivor ur lådan du väljer.</p>
+    <p>Tänk på företagets arkiv. Varje skiva som kommer in (ett album) sorteras in i en låda i ett fast arkivskåp (Gerudos genreträd). Arkivarien slår först upp skivan i en stor öppen katalog (Last.fm): skivans egen post, annars artistens. Först när katalogen inte säger något går arkivarien efter etiketten på skivan (dina filers genretaggar), och etiketten väljer fortfarande mappen inne i lådan. Om du själv flyttar en skiva gäller din lapp från och med då. Genreradion plockar helt enkelt slumpmässiga skivor ur lådan du väljer.</p>
   </div>
 
   <h3 id="radio-tree">Gerudos genreträd</h3>
@@ -3084,47 +3084,61 @@ html {
 
   <h3 id="radio-how">Så får en låt sin genre</h3>
   <figure class="widget" data-choices>
-    <p class="widget-hint">Välj en låt. Varje rad är ett steg; den gröna raden avgör.</p>
+    <p class="widget-hint">Välj ett album. Varje rad är ett steg, i tur och ordning; den gröna raden avgör.</p>
     <div class="pills">
-      <button type="button" data-show="split">Två genrer i en tagg</button>
-      <button type="button" data-show="detail">Last.fm lägger till detaljer</button>
-      <button type="button" data-show="none">Ingen tagg alls</button>
-      <button type="button" data-show="unknown">En stil som trädet inte känner till</button>
+      <button type="button" data-show="wrong">En felaktigt taggad fil</button>
+      <button type="button" data-show="detail">Dina taggar lägger till detaljer</button>
+      <button type="button" data-show="artist">Bara artisten är känd</button>
+      <button type="button" data-show="files">Last.fm vet ingenting</button>
+      <button type="button" data-show="new">En stil som trädet inte känner till</button>
       <button type="button" data-show="fix">Du har rättat den</button>
     </div>
-    <div data-panel="split">
+    <div data-panel="wrong">
       <ol class="pipeline">
-        <li class="win"><b>Dina taggar</b><span><span class="tag">Black Metal|Doom Metal</span> delas i två, och båda finns i trädet: <span class="genre">Metal → Black</span><span class="genre">Metal → Doom</span></span></li>
-        <li class="skip"><b>Last.fm</b><span>Behövs inte: dina taggar säger redan exakt var den hör hemma.</span></li>
+        <li class="win"><b>Last.fm: albumet</b><span>Taggat <span class="tag">hardcore punk</span>: <span class="genre">Punk &amp; Hardcore → Hardcore punk</span></span></li>
+        <li class="skip"><b>Last.fm: artisten</b><span>Behövs inte: albumets taggar avgjorde.</span></li>
+        <li class="skip"><b>Dina taggar</b><span><span class="tag">Hardcore Techno</span> pekar på Electronic, en annan huvudgenre än Last.fm:s, så den lämnas utanför.</span></li>
         <li class="skip"><b>Dina rättningar</b><span>Inga.</span></li>
       </ol>
+      <p class="widget-hint" style="margin:10px 0 0">Last.fm går först, så en enda felaktig tagg i filerna kan inte dra in ett album i fel genre. Om bara filerna hade fått avgöra hade det här punkalbumet hamnat i Electronic → Hardcore techno.</p>
     </div>
     <div data-panel="detail" hidden>
       <ol class="pipeline">
-        <li><b>Dina taggar</b><span><span class="tag">Metal</span>: bara huvudgenren. <span class="genre">Metal</span></span></li>
-        <li class="win"><b>Last.fm</b><span>På Last.fm är artisten taggad <span class="tag">atmospheric black metal</span>. Det ligger inom din Metal, så detaljen läggs till: <span class="genre">Metal → Black → Atmospheric</span></span></li>
+        <li class="win"><b>Last.fm: albumet</b><span>Taggat <span class="tag">metal</span>: <span class="genre">Metal</span></span></li>
+        <li class="skip"><b>Last.fm: artisten</b><span>Behövs inte.</span></li>
+        <li><b>Dina taggar</b><span><span class="tag">Atmospheric Black Metal</span> ligger inom Last.fm:s Metal, så detaljen läggs till: <span class="genre">Metal → Black → Atmospheric</span></span></li>
         <li class="skip"><b>Dina rättningar</b><span>Inga.</span></li>
       </ol>
-      <p class="widget-hint" style="margin:10px 0 0">Dina taggar går först: Last.fm lägger bara till detaljer inom dem. En Last.fm-tagg som pekar någon annanstans (säg ”rock”) flyttar inte ut en låt ur din Metal.</p>
+      <p class="widget-hint" style="margin:10px 0 0">Dina taggar väljer fortfarande undergenren, så länge den ligger inom huvudgenren som Last.fm valde.</p>
     </div>
-    <div data-panel="none" hidden>
+    <div data-panel="artist" hidden>
       <ol class="pipeline">
+        <li class="skip"><b>Last.fm: albumet</b><span>Bara taggar som inte är genrer (<span class="tag">2014</span> <span class="tag">favourite albums</span>).</span></li>
+        <li class="win"><b>Last.fm: artisten</b><span>Taggad <span class="tag">post-rock</span>: <span class="genre">Rock → Alternative / Indie → Post-rock</span></span></li>
         <li class="skip"><b>Dina taggar</b><span>Inga.</span></li>
-        <li class="win"><b>Last.fm</b><span>Artisten är taggad <span class="tag">post-rock</span>: <span class="genre">Rock → Alternative / Indie → Post-rock</span></span></li>
         <li class="skip"><b>Dina rättningar</b><span>Inga.</span></li>
       </ol>
     </div>
-    <div data-panel="unknown" hidden>
+    <div data-panel="files" hidden>
       <ol class="pipeline">
-        <li><b>Dina taggar</b><span><span class="tag">phonk</span>: en riktig stil, men inte en som trädet har.</span></li>
-        <li><b>Last.fm</b><span>Albumets egna Last.fm-taggar prövas; här placerar inte heller de det.</span></li>
-        <li class="win"><b>Utan genre</b><span>Albumet hamnar i listan <em>Without a genre</em> på radiosidan, under <em>Tags Radio doesn't know: phonk</em>. <b>Make a genre…</b> skapar en egen genre och flyttar dit varje album med den taggen: <span class="genre yours">Phonk</span></span></li>
+        <li class="skip"><b>Last.fm: albumet</b><span>Okänt för Last.fm.</span></li>
+        <li class="skip"><b>Last.fm: artisten</b><span>Också okänd.</span></li>
+        <li class="win"><b>Dina taggar</b><span><span class="tag">Black Metal|Doom Metal</span> delas i två, och båda finns i trädet: <span class="genre">Metal → Black</span><span class="genre">Metal → Doom</span></span></li>
+        <li class="skip"><b>Dina rättningar</b><span>Inga.</span></li>
       </ol>
+    </div>
+    <div data-panel="new" hidden>
+      <ol class="pipeline">
+        <li><b>Last.fm: albumet</b><span>Taggat <span class="tag">phonk</span>: en riktig stil, men inte en som trädet har.</span></li>
+        <li class="win"><b>Föreslagna genrer</b><span>Trettio av dina album delar taggen, så radiosidan föreslår den: <em>Phonk · 30 albums · Last.fm suggests under Electronic</em>. <b>Add…</b> gör den till din egen genre, och varje album taggat phonk hamnar där, även sådana som läggs till senare: <span class="genre yours">Electronic → Phonk</span></span></li>
+      </ol>
+      <p class="widget-hint" style="margin:10px 0 0">Inget ändras förrän du väljer. <em>Not a genre</em> gör i stället att den inte föreslås igen, på någon av dina enheter.</p>
     </div>
     <div data-panel="fix" hidden>
       <ol class="pipeline">
-        <li><b>Dina taggar</b><span><span class="tag">Shoegaze</span>: <span class="genre">Rock → Alternative / Indie → Shoegaze</span></span></li>
-        <li class="skip"><b>Last.fm</b><span>Behövs inte.</span></li>
+        <li><b>Last.fm: albumet</b><span>Taggat <span class="tag">shoegaze</span>: <span class="genre">Rock → Alternative / Indie → Shoegaze</span></span></li>
+        <li class="skip"><b>Last.fm: artisten</b><span>Behövs inte.</span></li>
+        <li class="skip"><b>Dina taggar</b><span>Behövs inte.</span></li>
         <li class="win"><b>Dina rättningar</b><span>Du valde <em>Radio genre… → Also add to</em> och din egen genre ”Late nights”. Albumet ligger kvar där det var och finns i din också: <span class="genre">Rock → Alternative / Indie → Shoegaze</span><span class="genre yours">Late nights</span></span></li>
       </ol>
       <p class="widget-hint" style="margin:10px 0 0">En rättning vinner över allt, och ingen ny tagg eller uppdatering från Last.fm gör den ogjord. Med <em>Move to</em> i stället för <em>Also add to</em> hade den tagits ut ur Shoegaze.</p>
@@ -3145,8 +3159,9 @@ html {
 
   <h3 id="radio-yours">Gör den till din</h3>
   <ul>
-    <li><b>Rätta ett album eller en artist:</b> <em>Radio genre…</em> i albumets ⋯-meny eller på artistens sida. Välj vad (det här albumet, eller allt av artisten, även senare album), var (valfri genre, eller en ny) och hur (<em>Move to</em> eller <em>Also add to</em>). En rättning gäller samma album på alla servrar.</li>
-    <li><b>Egna genrer:</b> skapa, byt namn på, flytta eller ta bort dem; byt namn på eller dölj Gerudos egna. Dina genrer får musik bara från dina rättningar, aldrig från taggar.</li>
+    <li><b>Rätta ett album eller en artist:</b> <em>Radio genre…</em> i albumets ⋯-meny eller på artistens sida. Första steget visar varför det ligger där det ligger (Last.fm:s taggar för albumet, för artisten eller dina filers taggar). Välj vad (det här albumet, eller allt av artisten, även senare album), var (valfri genre, eller en ny) och hur (<em>Move to</em> eller <em>Also add to</em>). En rättning gäller samma album på alla servrar.</li>
+    <li><b>Egna genrer:</b> skapa, byt namn på, flytta eller ta bort dem; byt namn på eller dölj Gerudos egna. Dina genrer får musik från dina rättningar och från sina stavningar: en genre som skapats ur en föreslagen tagg (eller en tagg i listan <em>Without a genre</em>) tar varje album med den taggen, även sådana som läggs till senare.</li>
+    <li><b>Föreslagna genrer:</b> radiosidan listar Last.fm-taggar som minst 5 av dina album delar men som trädet inte har, var och en med en föreslagen plats. <em>Add…</em> eller <em>Not a genre</em>; inget ändras förrän du väljer.</li>
     <li><b>Kombinerade radiokanaler:</b> en radiokanal över flera genrer, till exempel Black utan Raw, plus Doom. Kryssa i genrer i trädet (en ikryssad genre tar med allt under sig; kryssa ur en undergenre för att utesluta bara den), så räknar dialogrutan låtarna.</li>
     <li><b>Uteslut saker:</b> en låt, ett album (bara en version om du vill) eller en artist kan hållas utanför radion. De listas under <em>Left out of Radio</em>, var och en med Undo.</li>
     <li><b>Utan genre:</b> album som radion inte kan placera än, rättade ett i taget eller flera på en gång.</li>
@@ -3156,9 +3171,9 @@ html {
   <details>
     <summary>Under huven: Last.fm, ny musik och nya taggar</summary>
     <ul>
-      <li><b>Last.fm är valfritt.</b> Du anger en gratis Last.fm-nyckel en gång (Settings → Plugins); den skickas till hubben och visas aldrig igen. Hubben slår upp varje artist och album en gång, sparar taggarna och förnyar dem efter 30 dagar. Utan nyckel kommer genrerna bara från dina egna taggar.</li>
+      <li><b>Last.fm är valfritt.</b> Du anger en gratis Last.fm-nyckel en gång (Settings → Plugins); den skickas till hubben och visas aldrig igen. Hubben slår upp varje album och artist i ditt bibliotek i bakgrunden, sparar taggarna och förnyar dem efter 30 dagar. Den går långsamt med flit, så att Last.fm aldrig spärrar nyckeln: en uppslagning i sekunden, högst 3 000 om dagen, och en paus så fort Last.fm ber den sakta ner. Listan över vad som återstår överlever en omstart av hubben, och Settings → Plugins → Last.fm visar hur långt den har kommit. Utan nyckel kommer genrerna bara från dina egna taggar.</li>
       <li><b>Ny musik sorterar sig själv:</b> när Navidrome har skannat nya filer märker Gerudo det nästa gång radion behöver sina genrer och sorterar om, och frågar Last.fm bara om det som är nytt.</li>
-      <li><b>Sammanhanget räknas:</b> en tagg som ”hardcore” betyder hardcore techno bredvid elektroniska taggar och hardcore punk annars.</li>
+      <li><b>Sammanhanget räknas:</b> en tagg som ”hardcore” följer Last.fm:s starkaste taggar: hardcore techno när elektroniska taggar leder, hardcore punk annars.</li>
       <li><b>Gerudo skriver aldrig taggar.</b> Vill du ändra en genre överallt (även i andra spelare) taggar du om filerna; vill du ändra den bara i Gerudo använder du en rättning.</li>
     </ul>
   </details>
@@ -3570,17 +3585,18 @@ html {
   <h2 id="ch-news">Nyheter</h2>
   <p class="outcome">Det nya i varje version, senaste först.</p>
   <div class="card">
-    <h4>0.18.0</h4>
+    <h4>0.19.0</h4>
     <ul>
-      <li><b>Biblioteksgranskning</b> per server, med omslagsstorlekar (<a href="#everyday-check">kapitel 12</a>).</li>
-      <li><b>Random picks:</b> allt du har uteslutit i en lista, var och en med Undo.</li>
-      <li><b>Telefonens kortmeny</b> öppnas bredvid fingret, större; ett tryck utanför eller Bakåt stänger den.</li>
-      <li><b>Den här manualen.</b></li>
+      <li><b>Genreradion går efter Last.fm först:</b> varje album efter Last.fm:s genrer för det (annars för artisten), dina filers taggar där Last.fm inte vet något (<a href="#radio-how">kapitel 6</a>). En enda felaktig tagg i filerna drar inte längre in ett album i fel genre.</li>
+      <li><b>Hela ditt bibliotek på Last.fm:</b> hubben slår upp varje album och artist i bakgrunden, så långsamt att Last.fm aldrig spärrar nyckeln; Settings → Plugins → Last.fm visar hur långt den har kommit.</li>
+      <li><b>Föreslagna genrer:</b> Last.fm-taggar som många av dina album delar blir förslag på radiosidan: <em>Add…</em> eller <em>Not a genre</em>.</li>
+      <li><b>Varför det ligger där:</b> <em>Radio genre…</em> visar var ett albums genre kommer ifrån; undergenrer listas efter hur många låtar de har.</li>
     </ul>
   </div>
   <details open>
     <summary>Tidigare versioner</summary>
     <ul>
+      <li><b>0.18.0 (26 nov. 2026):</b> biblioteksgranskningen med omslagsstorlekar; allt som uteslutits ur Random picks i en lista; telefonens kortmeny bredvid fingret; den här manualen.</li>
       <li><b>0.17.0 (25 nov. 2026):</b> kombinerade radiokanaler; uteslut låtar, album och artister ur radion; sidan <em>Without a genre</em>; väntemarkeringar och ”N waiting”; ändringar väntar på en äldre hubb; Quick Scan behåller sitt läge; notiser som stannar längre.</li>
       <li><b>0.16.0 (25 nov. 2026):</b> radions genreredigerare (egna genrer, byt namn på eller dölj Gerudos, rättningar av album och artister); tillförlitlig överlämning av musik till en låst telefon.</li>
       <li><b>0.15.0 (24 nov. 2026):</b> kvalitetsmätaren och en flyttbar kvalitetspanel; uteslut album och artister ur Random picks; stjärnor och ändringar i spellistor väntar när du är offline; radions egna serverreglage; uppspelningen fortsätter efter en bruten anslutning; telefonen går att nå efter att Gerudo öppnats, och <em>Always reachable</em>.</li>
@@ -3600,7 +3616,7 @@ html {
 </section>
 
 <footer class="footer">
-  <p>Gerudo 0.18.0 · Den här manualen beskriver versionen ovan och växer med varje ny version.</p>
+  <p>Gerudo 0.19.0 · Den här manualen beskriver versionen ovan och växer med varje ny version.</p>
 </footer>
 </div>
 <button class="to-top" type="button">↑ Innehåll</button>

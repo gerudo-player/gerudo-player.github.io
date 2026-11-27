@@ -2352,11 +2352,11 @@ html {
 </nav>
 
 <header>
-  <div class="kicker">The manual · Gerudo 0.18.0</div>
+  <div class="kicker">The manual · Gerudo 0.19.0</div>
   <h1>Gerudo, explained: how your music follows you</h1>
   <p class="lede">Gerudo is a self-hosted music player for a Linux desktop and an Android phone. It plays your own music collection and Spotify side by side, keeps every device in step, and lets you move the music from one device to another without missing a beat. This manual explains every feature, and how and why it works the way it does.</p>
   <div class="meta">
-    <div><span>Describes</span>Gerudo 0.18.0</div>
+    <div><span>Describes</span>Gerudo 0.19.0</div>
     <div><span>Devices</span>Linux desktop · Android</div>
     <div><span>How to read it</span>Biggest things first; each chapter stands on its own</div>
   </div>
@@ -3067,11 +3067,11 @@ html {
 <section class="chapter" id="radio">
   <div class="chapter-num">6</div>
   <h2 id="ch-radio">Genre Radio</h2>
-  <p class="outcome">Endless music from any genre or subgenre of your own collection: Metal, or Metal → Black, or Metal → Black → Atmospheric, sorted by Gerudo's own genre tree, your files' tags and Last.fm.</p>
+  <p class="outcome">Endless music from any genre or subgenre of your own collection: Metal, or Metal → Black, or Metal → Black → Atmospheric, sorted by Gerudo's own genre tree, with Last.fm first and your files' tags where Last.fm knows nothing.</p>
 
   <div class="concept">
     <b>How it works</b>
-    <p>Think of the company's filing system. Every record that arrives (a song) has a label on it (its genre tags). A clerk files it in the right drawer of a fixed cabinet (Gerudo's genre tree). If the label is missing or unreadable, the clerk looks the record up in a big public catalogue (Last.fm). And if you ever move a record to another drawer yourself, your note on it wins from then on. Genre Radio simply pulls random records from the drawer you choose.</p>
+    <p>Think of the company's filing system. Every record that arrives (an album) is filed in a drawer of a fixed cabinet (Gerudo's genre tree). The clerk first looks the record up in a big public catalogue (Last.fm): its own entry, or else the artist's. Only when the catalogue says nothing does the clerk go by the label on the record (your files' genre tags), and the label still picks the folder inside the drawer. If you ever move a record yourself, your note wins from then on. Genre Radio simply pulls random records from the drawer you choose.</p>
   </div>
 
   <h3 id="radio-tree">Gerudo's genre tree</h3>
@@ -3083,47 +3083,61 @@ html {
 
   <h3 id="radio-how">How a song gets its genre</h3>
   <figure class="widget" data-choices>
-    <p class="widget-hint">Pick a song. Each row is one stage; the green row decides.</p>
+    <p class="widget-hint">Pick an album. Each row is one stage, in order; the green row decides.</p>
     <div class="pills">
-      <button type="button" data-show="split">Two genres in one tag</button>
-      <button type="button" data-show="detail">Last.fm adds detail</button>
-      <button type="button" data-show="none">No tag at all</button>
-      <button type="button" data-show="unknown">A style the tree doesn't know</button>
+      <button type="button" data-show="wrong">A wrongly tagged file</button>
+      <button type="button" data-show="detail">Your tags add detail</button>
+      <button type="button" data-show="artist">Only the artist is known</button>
+      <button type="button" data-show="files">Last.fm knows nothing</button>
+      <button type="button" data-show="new">A style the tree doesn't know</button>
       <button type="button" data-show="fix">You corrected it</button>
     </div>
-    <div data-panel="split">
+    <div data-panel="wrong">
       <ol class="pipeline">
-        <li class="win"><b>Your tags</b><span><span class="tag">Black Metal|Doom Metal</span> is split into two, and both are in the tree: <span class="genre">Metal → Black</span><span class="genre">Metal → Doom</span></span></li>
-        <li class="skip"><b>Last.fm</b><span>Not needed: your tags already say exactly where it goes.</span></li>
+        <li class="win"><b>Last.fm: the album</b><span>Tagged <span class="tag">hardcore punk</span>: <span class="genre">Punk &amp; Hardcore → Hardcore punk</span></span></li>
+        <li class="skip"><b>Last.fm: the artist</b><span>Not needed: the album's tags decided.</span></li>
+        <li class="skip"><b>Your tags</b><span><span class="tag">Hardcore Techno</span> points to Electronic, a different main genre from Last.fm's, so it's left out.</span></li>
         <li class="skip"><b>Your corrections</b><span>None.</span></li>
       </ol>
+      <p class="widget-hint" style="margin:10px 0 0">Last.fm comes first, so one wrong tag in the files can't pull an album into the wrong genre. Going by the files alone, this punk album would have landed in Electronic → Hardcore techno.</p>
     </div>
     <div data-panel="detail" hidden>
       <ol class="pipeline">
-        <li><b>Your tags</b><span><span class="tag">Metal</span>: only the main genre. <span class="genre">Metal</span></span></li>
-        <li class="win"><b>Last.fm</b><span>On Last.fm the artist is tagged <span class="tag">atmospheric black metal</span>. That lies inside your Metal, so it adds the detail: <span class="genre">Metal → Black → Atmospheric</span></span></li>
+        <li class="win"><b>Last.fm: the album</b><span>Tagged <span class="tag">metal</span>: <span class="genre">Metal</span></span></li>
+        <li class="skip"><b>Last.fm: the artist</b><span>Not needed.</span></li>
+        <li><b>Your tags</b><span><span class="tag">Atmospheric Black Metal</span> lies inside Last.fm's Metal, so it adds the detail: <span class="genre">Metal → Black → Atmospheric</span></span></li>
         <li class="skip"><b>Your corrections</b><span>None.</span></li>
       </ol>
-      <p class="widget-hint" style="margin:10px 0 0">Your tags come first: Last.fm only adds detail inside them. A Last.fm tag that points elsewhere (say, "rock") doesn't move a song out of your Metal.</p>
+      <p class="widget-hint" style="margin:10px 0 0">Your tags still pick the subgenre, as long as it lies inside the main genre Last.fm chose.</p>
     </div>
-    <div data-panel="none" hidden>
+    <div data-panel="artist" hidden>
       <ol class="pipeline">
+        <li class="skip"><b>Last.fm: the album</b><span>Only tags that aren't genres (<span class="tag">2014</span> <span class="tag">favourite albums</span>).</span></li>
+        <li class="win"><b>Last.fm: the artist</b><span>Tagged <span class="tag">post-rock</span>: <span class="genre">Rock → Alternative / Indie → Post-rock</span></span></li>
         <li class="skip"><b>Your tags</b><span>None.</span></li>
-        <li class="win"><b>Last.fm</b><span>The artist is tagged <span class="tag">post-rock</span>: <span class="genre">Rock → Alternative / Indie → Post-rock</span></span></li>
         <li class="skip"><b>Your corrections</b><span>None.</span></li>
       </ol>
     </div>
-    <div data-panel="unknown" hidden>
+    <div data-panel="files" hidden>
       <ol class="pipeline">
-        <li><b>Your tags</b><span><span class="tag">phonk</span>: a real style, but not one the tree has.</span></li>
-        <li><b>Last.fm</b><span>The album's own Last.fm tags are tried; here they don't place it either.</span></li>
-        <li class="win"><b>Without a genre</b><span>The album appears on the Radio page's <em>Without a genre</em> list, under <em>Tags Radio doesn't know: phonk</em>. <b>Make a genre…</b> creates your own genre and moves every album with that tag into it: <span class="genre yours">Phonk</span></span></li>
+        <li class="skip"><b>Last.fm: the album</b><span>Unknown to Last.fm.</span></li>
+        <li class="skip"><b>Last.fm: the artist</b><span>Unknown too.</span></li>
+        <li class="win"><b>Your tags</b><span><span class="tag">Black Metal|Doom Metal</span> is split into two, and both are in the tree: <span class="genre">Metal → Black</span><span class="genre">Metal → Doom</span></span></li>
+        <li class="skip"><b>Your corrections</b><span>None.</span></li>
       </ol>
+    </div>
+    <div data-panel="new" hidden>
+      <ol class="pipeline">
+        <li><b>Last.fm: the album</b><span>Tagged <span class="tag">phonk</span>: a real style, but not one the tree has.</span></li>
+        <li class="win"><b>Suggested genres</b><span>Thirty of your albums share the tag, so the Radio page suggests it: <em>Phonk · 30 albums · Last.fm suggests under Electronic</em>. <b>Add…</b> makes it your own genre, and every album tagged phonk goes there, also ones added later: <span class="genre yours">Electronic → Phonk</span></span></li>
+      </ol>
+      <p class="widget-hint" style="margin:10px 0 0">Nothing changes until you choose. <em>Not a genre</em> instead keeps it from being suggested again, on every device.</p>
     </div>
     <div data-panel="fix" hidden>
       <ol class="pipeline">
-        <li><b>Your tags</b><span><span class="tag">Shoegaze</span>: <span class="genre">Rock → Alternative / Indie → Shoegaze</span></span></li>
-        <li class="skip"><b>Last.fm</b><span>Not needed.</span></li>
+        <li><b>Last.fm: the album</b><span>Tagged <span class="tag">shoegaze</span>: <span class="genre">Rock → Alternative / Indie → Shoegaze</span></span></li>
+        <li class="skip"><b>Last.fm: the artist</b><span>Not needed.</span></li>
+        <li class="skip"><b>Your tags</b><span>Not needed.</span></li>
         <li class="win"><b>Your corrections</b><span>You chose <em>Radio genre… → Also add to</em> your own genre "Late nights". It stays where it was and is in yours too: <span class="genre">Rock → Alternative / Indie → Shoegaze</span><span class="genre yours">Late nights</span></span></li>
       </ol>
       <p class="widget-hint" style="margin:10px 0 0">A correction wins over everything, and no new tag or Last.fm refresh undoes it. <em>Move to</em> instead of <em>Also add to</em> would take it out of Shoegaze.</p>
@@ -3144,8 +3158,9 @@ html {
 
   <h3 id="radio-yours">Make it yours</h3>
   <ul>
-    <li><b>Correct an album or an artist:</b> <em>Radio genre…</em> in an album's ⋯ menu or on an artist's page. Choose what (this album, or everything by the artist, later albums too), where (any genre, or a new one) and how (<em>Move to</em> or <em>Also add to</em>). One correction covers the same album on every server.</li>
-    <li><b>Your own genres:</b> create, rename, move or delete them; rename or hide Gerudo's own. Your genres get music only from your corrections, never from tags.</li>
+    <li><b>Correct an album or an artist:</b> <em>Radio genre…</em> in an album's ⋯ menu or on an artist's page. The first step shows why it's where it is now (Last.fm's album tags, its artist tags or your files' tags). Choose what (this album, or everything by the artist, later albums too), where (any genre, or a new one) and how (<em>Move to</em> or <em>Also add to</em>). One correction covers the same album on every server.</li>
+    <li><b>Your own genres:</b> create, rename, move or delete them; rename or hide Gerudo's own. Your genres get music from your corrections, and from their spellings: one made from a suggested tag (or a tag on the <em>Without a genre</em> list) takes every album with that tag, also ones added later.</li>
+    <li><b>Suggested genres:</b> the Radio page lists Last.fm tags that at least 5 of your albums share but the tree doesn't have, each with a suggested place. <em>Add…</em> or <em>Not a genre</em>; nothing changes until you choose.</li>
     <li><b>Combined radios:</b> one radio over several genres, for example Black without Raw, plus Doom. Tick genres in the tree (a ticked genre brings everything below it; untick a subgenre to leave just that out), and the dialog counts the songs.</li>
     <li><b>Leave things out:</b> a song, an album (just one version if you like) or an artist can be kept out of Radio. They're listed under <em>Left out of Radio</em>, each with Undo.</li>
     <li><b>Without a genre:</b> albums Radio can't place yet, fixed one at a time or several at once.</li>
@@ -3155,9 +3170,9 @@ html {
   <details>
     <summary>Under the hood: Last.fm, new music and new tags</summary>
     <ul>
-      <li><b>Last.fm is optional.</b> You give a free Last.fm key once (Settings → Plugins); it goes to the hub and is never shown again. The hub looks each artist and album up once, keeps the tags and refreshes them after 30 days. Without a key, genres come from your own tags only.</li>
+      <li><b>Last.fm is optional.</b> You give a free Last.fm key once (Settings → Plugins); it goes to the hub and is never shown again. The hub looks up every album and artist of your library in the background, keeps the tags and refreshes them after 30 days. It goes slowly on purpose, so Last.fm never blocks the key: one lookup a second, at most 3 000 a day, and a pause whenever Last.fm asks it to slow down. Its to-do list survives a hub restart, and Settings → Plugins → Last.fm shows how far it has come. Without a key, genres come from your own tags only.</li>
       <li><b>New music sorts itself:</b> when Navidrome has scanned new files, Gerudo notices the next time Radio needs its genres and sorts again, asking Last.fm only about what's new.</li>
-      <li><b>Context counts:</b> a tag like "hardcore" means hardcore techno next to electronic tags and hardcore punk otherwise.</li>
+      <li><b>Context counts:</b> a tag like "hardcore" follows Last.fm's strongest tags: hardcore techno when electronic tags lead, hardcore punk otherwise.</li>
       <li><b>Gerudo never writes tags.</b> To change a genre everywhere (in other players too), retag the files; to change it only in Gerudo, use a correction.</li>
     </ul>
   </details>
@@ -3569,17 +3584,18 @@ html {
   <h2 id="ch-news">What's new</h2>
   <p class="outcome">Each release's new features, newest first.</p>
   <div class="card">
-    <h4>0.18.0</h4>
+    <h4>0.19.0</h4>
     <ul>
-      <li><b>Library check</b> per server, with cover sizes (<a href="#everyday-check">chapter 12</a>).</li>
-      <li><b>Random picks:</b> everything left out in one list, each with Undo.</li>
-      <li><b>The phone's card menu</b> opens beside your finger, larger; a tap outside or Back closes it.</li>
-      <li><b>This manual.</b></li>
+      <li><b>Genre Radio goes by Last.fm first:</b> each album by Last.fm's genres for it (else for its artist), your files' tags where Last.fm knows nothing (<a href="#radio-how">chapter 6</a>). One wrong tag in the files no longer pulls an album into the wrong genre.</li>
+      <li><b>Your whole library on Last.fm:</b> the hub looks up every album and artist in the background, slowly enough that Last.fm never blocks the key; Settings → Plugins → Last.fm shows how far it has come.</li>
+      <li><b>Suggested genres:</b> Last.fm tags many of your albums share become suggestions on the Radio page: <em>Add…</em> or <em>Not a genre</em>.</li>
+      <li><b>Why it's there:</b> <em>Radio genre…</em> shows where an album's genre came from; subgenres are listed by how many songs they have.</li>
     </ul>
   </div>
   <details open>
     <summary>Earlier releases</summary>
     <ul>
+      <li><b>0.18.0 (26 Nov 2026):</b> the Library check with cover sizes; everything left out of Random picks in one list; the phone's card menu beside your finger; this manual.</li>
       <li><b>0.17.0 (25 Nov 2026):</b> combined radios; leaving songs, albums and artists out of Radio; the <em>Without a genre</em> page; waiting marks and "N waiting"; changes wait for an older hub; Quick Scan keeps its state; longer notices.</li>
       <li><b>0.16.0 (25 Nov 2026):</b> the Radio genre editor (your own genres, rename or hide Gerudo's, album and artist corrections); handing music to a locked phone made reliable.</li>
       <li><b>0.15.0 (24 Nov 2026):</b> the quality gauge and a movable quality panel; leaving albums and artists out of Random picks; stars and playlist edits wait offline; Radio's own server switches; playback resumes after a lost connection; the phone reachable after Gerudo is opened, and <em>Always reachable</em>.</li>
@@ -3599,7 +3615,7 @@ html {
 </section>
 
 <footer class="footer">
-  <p>Gerudo 0.18.0 · This manual describes the version above and grows with every release.</p>
+  <p>Gerudo 0.19.0 · This manual describes the version above and grows with every release.</p>
 </footer>
 </div>
 <button class="to-top" type="button">↑ Contents</button>
